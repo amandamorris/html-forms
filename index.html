@@ -2,84 +2,132 @@
 <html>
 <head>
     <title>Ubermelon Order Form</title>
+    <style>
+        *{
+            font-family: Helvetica, sans-serif;
+            color: gray;
+        }
+
+        .header {
+            text-align: center;
+            color: #555555;
+        }
+
+        .table {
+            display: inline-block;
+            width: 40%;
+        }
+
+        .input {
+            display: inline-block;
+            width: 60%;
+            vertical-align: top;
+        }
+
+        table{
+            margin: 15px auto;
+            border: 2px solid gray;
+            border-collapse: collapse;
+        }
+
+        table *{
+            border: 2px solid gray;
+            text-align: center;
+            padding: 2px;
+        }
+
+        form div {
+            padding: 5px;
+        }
+
+        .bold{
+            font-weight: bold;
+            color: #555555;
+        }
+
+    </style>
 </head>
 <body>
-    <h1>Order!</h1>
+    <div class="header">
+        <h1>Order!</h1>
+    </div> 
 
-    <table>
-        <tr>
-            <th>Melon Name</th>
-            <th>Price per lb.</th>
-        </tr>
+    <div class="table">   
+        <table>
+            <tr>
+                <th>Melon Name</th>
+                <th>Price per lb.</th>
+            </tr>
 
-        <tr>
-            <td>Watermelon</td>
-            <td>$1.59</td>
-        </tr>
+            <tr>
+                <td>Watermelon</td>
+                <td>$1.59</td>
+            </tr>
 
-        <tr>
-            <td>Honeydew</td>
-            <td>$0.99</td>
-        </tr>
+            <tr>
+                <td>Honeydew</td>
+                <td>$0.99</td>
+            </tr>
 
-        <tr>
-            <td>Canteloupe</td>
-            <td>$1.29</td>
-        </tr>
+            <tr>
+                <td>Canteloupe</td>
+                <td>$1.29</td>
+            </tr>
 
-        <tr>
-            <td>Crenshaw</td>
-            <td>$2.19</td>
-        </tr>
+            <tr>
+                <td>Crenshaw</td>
+                <td>$2.19</td>
+            </tr>
 
-        <tr>
-            <td>Canary</td>
-            <td>$11.99</td>
-        </tr>
-    </table>
+            <tr>
+                <td>Canary</td>
+                <td>$11.99</td>
+            </tr>
+        </table>
+    </div><div class="input">
+        <p>Place your orders here! You know you want to.</p>
 
-    <p>Place your orders here! You know you want to.</p>
+        <form action="https://ubermelon-order-form.herokuapp.com/process" method="POST">
+            <div><span class="bold">First Name </span><input type="text" name="firstname"></div>
+            <div><span class="bold">Last Name</span> <input type="text" name="lastname"></div>
+            <div><span class="bold">Melon Type</span> 
+                <select name="melontype">
+                    <option value="watermelon">Watermelon</option>
+                    <option value="honeydew">Honeydew</option>
+                    <option value="canteloupe">Canteloupe</option>
+                    <option value="crenshaw">Crenshaw</option>
+                    <option value="canary">Canary</option>
+                </select>  
+            </div> 
+            <div><span class="bold">Quantity* </span><input type="text" name="quantity"></div>
 
-    <form action="https://ubermelon-order-form.herokuapp.com/process" method="POST">
-        <div>First Name <input type="text" name="firstname"></div>
-        <div>Last Name <input type="text" name="lastname"></div>
-        <div>Melon Type 
-            <select name="melontype">
-                <option value="watermelon">Watermelon</option>
-                <option value="honeydew">Honeydew</option>
-                <option value="canteloupe">Canteloupe</option>
-                <option value="crenshaw">Crenshaw</option>
-                <option value="canary">Canary</option>
-            </select>  
-        </div> 
-        <div>Quantity* <input type="text" name="quantity"></div>
+            <div><span class="bold">Delivery Time</span>
+                <div><input type="radio" name="time" value="am">12:00am-12:00pm</div>   
+                <div><input type="radio" name="time" value="pm">12:00pm-12:00am</div>
+                <div><input type="radio" name="time" value="wat">Time is an illusion</div>
+            </div>
+            
+            <div><span class="bold">Returning Customer?</span>
+                <div><input type="radio" name="returning" value="yes">Yes</div>
+                <div><input type="radio" name="returning" value="no">No</div>
+            </div>
 
-        <div>Delivery Time
-            <input type="radio" name="time" value="am">12:00am-12:00pm
-            <input type="radio" name="time" value="pm">12:00pm-12:00am
-            <input type="radio" name="time" value="wat">Time is an illusion
-        </div>
-        
-        <div>Returning Customer?
-            <input type="radio" name="returning" value="yes">Yes
-            <input type="radio" name="returning" value="no">No
-        </div>
+            <div><span class="bold">For Statistical Purposes:</span> 
+                <div><input type="checkbox" name="stats" value="Dog">Dog</div>
+                <div><input type="checkbox" name="stats" value="Cat">Cat</div>
+                <div><input type="checkbox" name="stats" value="Hedgehog">Hedgehog</div>
+                <div><input type="checkbox" name="stats" value="Balloonicorn">Balloonicorn</div>
+                <div><input type="checkbox" name="stats" value="Yak">Yak</div>
+            </div>
 
-        <div>For Statistical Purposes: 
-            <input type="checkbox" name="stats" value="Dog">Dog
-            <input type="checkbox" name="stats" value="Cat">Cat
-            <input type="checkbox" name="stats" value="Hedgehog">Hedgehog
-            <input type="checkbox" name="stats" value="Balloonicorn">Balloonicorn
-            <input type="checkbox" name="stats" value="Yak">Yak
-        </div>
+            <p class="bold">Tell us why Balloonicorn is awesome: </p>
+            <div>
+                <textarea name="balloonicorn-greatness"></textarea>
+            </div>
 
-        <p>Tell us why Balloonicorn is awesome: </p>
-        <div>
-            <textarea name="balloonicorn-greatness"></textarea>
-        </div>
-
-        <input type="submit">
-    </form>
+            <input type="submit">
+        </form>
+    </div>
 
     <div>*Quantities are given by the flat</div>
 </body>
